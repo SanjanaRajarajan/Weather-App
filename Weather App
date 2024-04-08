@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      background-image:url(c:\Users\Admin\Desktop\Weather_img\bg_img.jpeg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image:url(https://preview.colorkit.co/gradient/62cff4-2c67f2.png?size=wallpaper&scale=0.25&static=true);
+    }
+    .container{
+      width: 90%;
+      max-width: 470px;
+      text-align: center;
+      color:black;
+      background-color: #eadfe84a;
+      margin: 65px auto 0;
+      border-radius: 10px;
+      padding:40px 35px;
+      outline: #555;
+    }
+    .search{
+      width: 100%;
+      display: flex;
+      align-items:center;
+      justify-content: space-between;
+    }
+    .search input{
+      border:0;
+      outline:0;
+      background: #ebfffe;
+      color: black;
+      padding:10px 25px;
+      height:48px;
+      border-radius:25px;
+      flex:1;
+      margin-right: 16px;
+      font-size:21px;
+    }
+    .search button{
+      border:0;
+      outline: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      width: 54px;
+      height: 54px;
+      background: #ebfffe;
+    }
+    .img1{
+      width: 53px;
+      height: 53px;
+      border-radius: 50%;
+    }
+    .img2{
+      outline:0;
+      border:0;
+      padding-top: 20px;
+      width: 230px;
+      height: 180px;
+      border-radius: 50px;
+    }
+    .cols{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 50px;
+    }
+    .col1{
+      display: flex;
+      align-items: center;
+      text-align: left;
+    }
+    .wind{
+      font-size: 19px;
+      font-weight:900;
+      font-style: italic;
+    }
+    .stat1{
+      font-size: 19px;
+      font-weight:900;
+      font-style: italic;
+    }
+    .humid{
+      font-size: 19px;
+      font-weight:900;
+      font-style: italic;
+    }
+    .stat2{
+      font-size: 19px;
+      font-weight:900;
+      font-style: italic;
+    }
+    .col2{
+      display: flex;
+      text-align: left;
+      padding-left: 70px;
+    }
+    .windspeed{
+      width: 70px;
+      height: 55px;
+      padding-right: 8px;
+    }
+    .humidity{
+      width: 70px;
+      height: 55px;
+      padding-right: 10px;
+    }
+    .city{
+      font-family: Comic Sans MS;
+      font-weight: 900;
+      font-style: italic;
+      font-size: 50px;
+    }
+    .temp{
+        font-size: 30px;
+    }
+  </style>
+  <script>
+     document.addEventListener("DOMContentLoaded", function() {
+    const apikey = "9cd8893030a652e0fb40ada84dd912c0";
+    const apiurl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+    const searchbox = document.querySelector(".search input");
+    const searchbtn = document.querySelector(".search button");
+    const weathericon = document.querySelector(".img2");
+
+    async function checkweather(city) {
+      const response = await fetch(`${apiurl}${city}&appid=${apikey}`);
+      const data = await response.json();
+      console.log(data);
+      document.querySelector(".city").innerHTML = data.name;
+      document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + " °C";
+      document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
+      document.querySelector(".humid").innerHTML = data.main.humidity + " %";
+
+      if (data.weather[0].main == "Clouds") {
+        weathericon.src = "c:/Users/sana0/Desktop/weather_img/images/clouds.png";
+      } else if (data.weather[0].main == "Clear") {
+        weathericon.src = "c:/Users/sana0/Desktop/weather_img/images/clear.png";
+      } else if (data.weather[0].main == "Rain") {
+        weathericon.src = "c:/Users/sana0/Desktop/weather_img/images/rain.png";
+      } else if (data.weather[0].main == "Drizzle") {
+        weathericon.src = "c:/Users/sana0/Desktop/weather_img/images/drizzle.png";
+      } else if (data.weather[0].main == "Mist") {
+        weathericon.src = "c:/Users/sana0/Desktop/weather_img/images/mist.png";
+      }
+    }
+
+    searchbtn.addEventListener("click", () => {
+      checkweather(searchbox.value);
+    });
+  });
+
+  </script>
+</head>
+<body>
+    <div class="container">
+      <div class="search">
+        <input type="text" placeholder="Enter your City Name...." spellcheck="false">
+        <button ><img class="img1" src="c:\Users\sana0\Desktop\weather_img\search_img.png"></button>
+      </div>
+
+      <div class="weather">
+        <img class="img2" src="c:\Users\sana0\Desktop\weather_img\images\clouds.png">
+        <h1 class="city">  New York</h1>
+        <h2 class="temp">  22°C</h2>
+
+        <div class="cols">
+          <div class="col1">
+            <img class="windspeed" src="c:\Users\sana0\Desktop\weather_img\images\wind.png">
+          <div>
+            <p  class="wind">50 km/h</p>
+            <p class="stat1">Wind Speed</p>
+          </div>
+        </div>
+          <div class="col2">
+            <img class="humidity" src="c:\Users\sana0\Desktop\weather_img\images\humidity.png">
+          <div>
+            <p class="humid">   50 %</p>
+            <p class="stat2">Humidity</p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
