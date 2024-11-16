@@ -11,10 +11,9 @@
       box-sizing: border-box;
     }
     body{
-      background-image:url(c:\Users\Admin\Desktop\Weather_img\bg_img.jpeg);
       background-repeat: no-repeat;
       background-size: cover;
-      background-image:url(https://preview.colorkit.co/gradient/62cff4-2c67f2.png?size=wallpaper&scale=0.25&static=true);
+      background-image:url('/bg_img.jpg');
     }
     .container{
       width: 90%;
@@ -48,16 +47,14 @@
     .search button{
       border:0;
       outline: 0;
-      border-radius: 50%;
       cursor: pointer;
       width: 54px;
       height: 54px;
-      background: #ebfffe;
+      background: transparent;
     }
     .img1{
-      width: 53px;
-      height: 53px;
-      border-radius: 50%;
+      width: 50px;
+      height: 40px;
     }
     .img2{
       outline:0;
@@ -142,15 +139,15 @@
       document.querySelector(".humid").innerHTML = data.main.humidity + " %";
 
       if (data.weather[0].main == "Clouds") {
-        weathericon.src = "c:/Users/sana0/Desktop/weather_img/images/clouds.png";
+        weathericon.src = "/clear-sky.png";
       } else if (data.weather[0].main == "Clear") {
-        weathericon.src = "c:/Users/sana0/Desktop/weather_img/images/clear.png";
+        weathericon.src = "/clear-sky.png";
       } else if (data.weather[0].main == "Rain") {
-        weathericon.src = "c:/Users/sana0/Desktop/weather_img/images/rain.png";
+        weathericon.src = "/rain.png";
       } else if (data.weather[0].main == "Drizzle") {
-        weathericon.src = "c:/Users/sana0/Desktop/weather_img/images/drizzle.png";
+        weathericon.src = "/drizzle.png";
       } else if (data.weather[0].main == "Mist") {
-        weathericon.src = "c:/Users/sana0/Desktop/weather_img/images/mist.png";
+        weathericon.src = "/mist.png";
       }
     }
 
@@ -165,24 +162,24 @@
     <div class="container">
       <div class="search">
         <input type="text" placeholder="Enter your City Name...." spellcheck="false">
-        <button ><img class="img1" src="c:\Users\sana0\Desktop\weather_img\search_img.png"></button>
+        <button ><img class="img1" src="/search.png"></button>
       </div>
 
       <div class="weather">
-        <img class="img2" src="c:\Users\sana0\Desktop\weather_img\images\clouds.png">
+        <img class="img2" src="/clear-sky.png">
         <h1 class="city">  New York</h1>
         <h2 class="temp">  22°C</h2>
 
         <div class="cols">
           <div class="col1">
-            <img class="windspeed" src="c:\Users\sana0\Desktop\weather_img\images\wind.png">
+            <img class="windspeed" src="/windspeed.png">
           <div>
             <p  class="wind">50 km/h</p>
             <p class="stat1">Wind Speed</p>
           </div>
         </div>
           <div class="col2">
-            <img class="humidity" src="c:\Users\sana0\Desktop\weather_img\images\humidity.png">
+            <img class="humidity" src="/humidity.png">
           <div>
             <p class="humid">   50 %</p>
             <p class="stat2">Humidity</p>
